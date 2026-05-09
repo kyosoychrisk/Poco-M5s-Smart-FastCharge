@@ -1,73 +1,24 @@
-# Poco-M5s-Smart-FastCharge
+# ⚡ Poco M5s Smart FastCharge (Rosemary)
+Módulo para APatch/Magisk diseñado para desbloquear y gestionar inteligentemente la carga rápida en el **Poco M5s** (rosemary). Especialmente útil para ROMs AOSP como Evolution X, donde la velocidad de carga por defecto suele estar muy limitada o ser inestable.
+## 🧠 Lógica de Control Térmico Inteligente
+A diferencia de otros módulos que fuerzan la carga al máximo constantemente (arriesgando la vida útil de la batería), este script implementa **escalones térmicos** similares a los del kernel stock de Xiaomi. El módulo ajusta el amperaje en tiempo real según la temperatura actual del dispositivo:
 
-[![Android](https://img.shields.io/badge/Android-16+-2196F3?style=flat-square&logo=android)](https://www.android.com/)
-[![License](https://img.shields.io/badge/License-GPL%203.0-green?style=flat-square)](LICENSE)
-[![Release](https://img.shields.io/badge/Release-v4.0-blue?style=flat-square)](https://github.com/kyosoychrisk/Poco-M5s-Smart-FastCharge/releases)
+| Temperatura | Modo de Carga | Amperaje Máximo |
+| :--- | :--- | :--- |
+| **Menos de 39°C** | 🟢 Ultra Rápido | ~4500 mA (Aprovechando los 33W) |
+| **De 39°C a 43°C** | 🟡 Balanceado | ~2800 mA |
+| **De 43°C a 45°C** | 🟠 Enfriamiento | ~1500 mA |
+| **Más de 45°C** | 🔴 Protección | ~500 mA (Previene sobrecalentamiento) |
 
-## 📱 Descripción
-
-Módulo Magisk para carga rápida inteligente en Poco M5s. Optimiza el control térmico y la velocidad de carga mediante un sistema avanzado de gestión de batería y temperatura.
-
-## ✨ Características
-
-- ⚡ Carga rápida optimizada
-- 🌡️ Control inteligente de temperatura
-- 🔋 Gestión avanzada de batería
-- 📊 Monitoreo en tiempo real
-- 🎯 Compatible con Android 16+
-
-## 🌡️ Niveles Térmicos
-
-| Nivel | Temperatura | Estado | Acción |
-|-------|------------|--------|---------|
-| **Frío** | < 30°C | Normal | Carga máxima |
-| **Óptimo** | 30-40°C | Ideal | Carga rápida |
-| **Moderado** | 40-45°C | Alerta | Carga estándar |
-| **Caliente** | 45-50°C | Advertencia | Carga reducida |
-| **Crítico** | > 50°C | Peligro | Pausa de carga |
-
-## 🚀 Instalación
-
-1. Descarga `FastCharge_Smart.zip` desde [Releases](https://github.com/kyosoychrisk/Poco-M5s-Smart-FastCharge/releases)
-2. Abre Magisk Manager
-3. Ve a "Módulos" → "Instalar desde almacenamiento"
-4. Selecciona el archivo ZIP descargado
-5. Reinicia tu dispositivo
-
-## 📋 Requisitos
-
-- ✅ Magisk 25.0+
-- ✅ Android 11+
-- ✅ Dispositivo rooteado (Poco M5s)
-
-## 📝 Cambios en v4.0
-
-- Soporte para Android 16
-- Mejora en algoritmo de control térmico
-- Optimización de consumo de batería
-- Interfaz mejorada
-
-## 🤝 Contribuir
-
-Las contribuciones son bienvenidas. Para cambios mayores:
-1. Fork el repositorio
-2. Crea una rama (`git checkout -b feature/mejora`)
-3. Commit tus cambios (`git commit -am 'Agrega mejora'`)
-4. Push a la rama (`git push origin feature/mejora`)
-5. Abre un Pull Request
-
-## ⚖️ Licencia
-
-Este proyecto está bajo la licencia [GPL-3.0](LICENSE). Ver el archivo LICENSE para más detalles.
-
-## 📞 Soporte
-
-Para reportar problemas o sugerencias, abre un [Issue](https://github.com/kyosoychrisk/Poco-M5s-Smart-FastCharge/issues).
-
-## 👤 Autor
-
-**kyosoychrisk**
-
----
-
-⭐ Si te fue útil, no olvides darle una estrella al repositorio
+## 📱 Requisitos
+- **Dispositivo:** Poco M5s (rosemary) con MediaTek Helio G95.
+- **Root:** APatch (Recomendado) o Magisk.
+- **Sistema:** Probado en ROMs AOSP (Android 14, 15 y Android 16 Baklava).
+## 🛠️ Instalación
+1. Ve a la sección de [Releases](../../releases) a la derecha de esta página y descarga el archivo `FastCharge_Smart.zip` más reciente.
+2. Abre tu gestor de root (APatch o Magisk).
+3. Ve a la pestaña de Módulos, selecciona instalar desde el almacenamiento y elige el archivo `.zip`.
+4. **Reinicia el dispositivo.**
+5. *Nota técnica:* El script tiene un retraso programado (`sleep 40`) para evitar conflictos durante el arranque del sistema. Espera aproximadamente un minuto tras encender el equipo para conectar el cargador y ver los resultados en Ampere.
+## ⚠️ Disclaimer
+> Tu garantía ya está anulada. Modificar los perfiles de carga siempre conlleva un riesgo. No me hago responsable por dispositivos dañados o baterías degradadas. Monitorea la temperatura de tu equipo durante los primeros ciclos de uso para asegurar que el control térmico actúa correctamente.
