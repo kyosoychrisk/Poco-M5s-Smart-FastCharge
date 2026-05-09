@@ -40,13 +40,6 @@ Módulo Magisk para carga rápida inteligente en Poco M5s. Optimiza el control t
 - ✅ Android 11+
 - ✅ Dispositivo rooteado (Poco M5s)
 
-## 🛠️ Configuración
-
-El módulo se configura automáticamente. Para ajustes avanzados, edita:
-```bash
-/data/adb/modules/FastCharge_Smart/service.sh
-```
-
 ## 📝 Cambios en v4.0
 
 - Soporte para Android 16
